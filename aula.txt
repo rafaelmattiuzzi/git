@@ -1,0 +1,32 @@
+Comandos basicos do prompt:
+	- cd: após este comando coloco a pasta que eu quero ir;
+	- cd ..: volta uma pasta;
+	- mkdir: ao lado coloco um nome de pasta e ela vai ser criada onde estou;
+	- tree /f: mostra todos os arquivos que estão dentro da pasta que eu estou;
+
+Configurando dados pessoais:
+	- nome: git config --global user.name "Rafael Mattiuzzi";
+	- email: git config --global user.email "rafael_mattiuzzi@hotmail.com";
+	- editor de código: git config --global core.editor vscode (para sublime uso 'sub');
+
+Para consultar itens configurados:
+	- nome: git config user.name;
+	- email: git config user.email;
+	- editor: git config core.editor;
+	- listar todos os itens: git config --list;
+
+Iniciando um repositório:
+	- Primeiro entro na pasta do meu WAMP 'www' (cd C:/wamp64/www);
+	- Acesso a pasta do projeto onde vou trabalhar (ex:Projeto_x);
+	- Estando na pasta dou o comando 'git init', assim caso a pasta esteja vazia ele cria um repositório vazio ou carrega todos os arquivos que estiverem na pasta (com isso vai ser criada uma pasta de forma oculta chamada '.git', se não aparecer vai em configurações de pastas e libera a visualização de pastas ou arquivos ocultos);
+
+	Branch: 
+		- É a versão do meu sistema. A versão principal é 'master'.	Assim posso criar dois 'branch', para cada um trabalhar em uma versão do sitema;
+
+	Commit: 
+		- É fazer o envio de alguma alteração para o git. Ao fazer o commit eu escrevo um comentário sobre a alteração que foi feita no projeto;
+
+	README:
+		- Todo sistema criado deve ter um arquivo 'README.md', onde terá todas as instruções sobre o sistema, forma de usar, etc;
+
+	- Com o comando 'git status' eu vejo os documentos que ainda não foram adicionados ao git e para adicionálos uso 'git add -A' este comando adiciona todos os arquivos não adicionados;
