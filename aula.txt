@@ -30,3 +30,80 @@ Iniciando um repositório:
 		- Todo sistema criado deve ter um arquivo 'README.md', onde terá todas as instruções sobre o sistema, forma de usar, etc;
 
 	- Com o comando 'git status' eu vejo os documentos que ainda não foram adicionados ao git e para adicionálos uso 'git add -A' este comando adiciona todos os arquivos não adicionados;
+
+	- Com isso agora posso fazer o meu commit utilizando o código 'git commit -m "Aqui escrevo a mensagem que vai descrever as alterações"';
+
+	- Posso adicionar os arquivos ja fazendo o commit com 'git commit -am "Descrição"';
+
+	- Utilizando o comando 'git log' ele mostra todos os commits feitos naquele projeto;
+
+
+
+Revertendo Modificações
+	- Com o comando 'git branch' eu verifico a lista de todos os branchs do meu projeto e o atual fica com um '*' do lado;
+
+	- Para cancelar os commits e voltar para determinado commit posso fazer de três formas:
+		- 'git reset --soft codigoDoCommit': Vai voltar para o commit selecionado, porém com todas as alterações feitas nos próximos commits ainda no documento só não commitadas (mais recomendado);
+
+		- 'git reset --mixed codigoDoCommit': Parecido com o anterior mas eu vou precisar dar o 'add' para depois commitar;
+
+		- 'git reset --hard codigoDoCommit': Tudo o que foi feito depois do commit que eu selecionar vai sumir, não é muito recomendado;
+
+
+
+Trabalhando com vário Branchs
+	- Para criar novo branch 'git branch nomeDoBranch';
+
+	- Para trocar de branch 'git checkout nomeDoBranch';
+
+	- Vamos supor que tenho o branch test e o master e quero passar os dados do test para o master, faço a seguinte sequência de comandos:
+		- git checkout test
+		- git pull origin master
+		- git checkout master
+		- git merge test
+
+	- Para excluir um branch:
+		- git branch -d <nome do branch>;
+
+
+
+Diferença entre arquivos
+	- Vamos supor que fiz algumas alterações durante a semana sem commitar e quero saber exatamente o que foi alterado antes de commitar, para isso uso 'git diff';
+
+	- Para ver apenas o nome dos arquivos modificados 'git diff --name-only';
+
+	- Para ver o que foi alterado em determinado arquivo 'git diff <nome do arquivo>';
+
+	- Vamos supor que eu fiz o commit alterando dois arquivos mas eu quero cancelar a alteração feita em um deles 'git checkout HEAD -- <nome do arquivo que quero cancelar>' (depois disso preciso commitar de novo);
+
+
+
+Criando um repositório no Github
+	- Vou no github e crio um novo repositório;
+
+	- O segundo passo é criar uma chave que vai ser usada para conectar o repositório local ao remoto, para isso nesse link (https://help.github.com/articles/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent/), tem o passo a passo;
+		- Para windows preciso baixar um arquivo 'git bash' no site 'gitforwindows.org';
+		- Com o 'git bash' instalado e aberto digito o seguinte comando 'ssh-keygen -t rsa -b 4096 -C "rafael_mattiuzzi@hotmail.com"' (o email tem que ser o mesmo do github) após o comando dou um enter;
+		- Ele vai mostrar o caminho onde vai ficar o arquivo com a chave, provavelmente vai ser um arquivo oculto '.ssh', dou um enter;
+		- Assim ele vai criar o arquivo e vai pedir para eu digitar uma frase senha, posso deixar em branco, para isso dou outro enter;
+		- Vai pedir para confirmar, dou outro enter, assim ele cria a chave publica e a privada;
+		- Agora localizo o arquivo que quero, neste caso o publico 'id_rsa.pub', abro ele no meu editor e copio todo o conteúdo que é a chave;
+		- Após copiada a chave vou no github, clico no icone do meu usiário e vou em 'settings';
+		- Vou no menu 'SSH and GPG keys';
+		- Clico em 'New SSH key';
+		- No título coloco um nome para este computador (cada computador terá que fazer um cadastro deste) e no 'key' colo a chave criada;
+		- Pronto agora posso fazer o vinculo entre meu repositório local e o remoto;
+
+	Enviando o repositorio local para remoto
+		- Primeiro dou o comando 'git remote add origin https://github.com/rafaelmattiuzzi/git.git' (origin é um nome que dou para o arquivo original);
+
+		- Dando o comando 'git remote' ele vai mostrar o 'origin' dizendo que esta adicionado;
+
+		- Depois disso eu tenho que transferir os arquivos do meu local para o remoto com o comando 'git push -u origin master' ('origin' é o nome que eu dei ali em cima e 'master' é o branch que eu estou enviando);
+
+		- Agora vamos supor que alguem fez uma alteração no meu projeto no github, sendo assim preciso transferir os arquivos do remoto para o local, para isso em vez de 'push' eu uso 'fetch';
+
+	Gravar alterações no repositório remoto
+		- Após fazer um commit normal as alterações são salvas apenas no repositório local;
+
+		- Para gravar estas mesmas alterações no repositório remoto eu faço 'git push origin master';
